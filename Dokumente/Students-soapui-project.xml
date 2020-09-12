@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="bc7df105-0764-455b-82d7-8a3896bb08fe" activeEnvironment="Default" name="students" soapui-version="5.3.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="b665c0d0-d37d-4a82-8611-1ff2cb8e52dc" wsaVersion="NONE" name="StudentsPortSoap11" type="wsdl" bindingName="{http://concretepage.com/soap}StudentsPortSoap11" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/spring4soap-1/soapws/students.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/spring4soap-1/soapws/students.wsdl"><con:part><con:url>http://localhost:8080/spring4soap-1/soapws/students.wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://concretepage.com/soap" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://concretepage.com/soap" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://concretepage.com/soap">
+  <wsdl:types>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://concretepage.com/soap" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="getStudentRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:choice>
+              <xs:element name="studentId" type="tns:myid"/>
+              <xs:element name="studentId1" type="tns:myid1"/>
+            </xs:choice>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:simpleType name="celsiusKörperTemp">
+        <xs:restriction base="xs:decimal">
+          <xs:totalDigits value="3"/>
+          <xs:fractionDigits value="1"/>
+          <xs:minInclusive value="35.0"/>
+          <xs:maxInclusive value="42.5"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="modell">
+        <xs:restriction base="xs:string">
+          <xs:minLength value="5"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="String500">
+        <xs:restriction base="xs:string">
+          <xs:minLength value="1"/>
+          <xs:maxLength value="500"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="myid">
+        <xs:restriction base="xs:int">
+          <xs:maxInclusive value="5"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="myid1">
+        <xs:restriction base="xs:int">
+          <xs:maxInclusive value="2"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="datid">
+        <xs:restriction base="xs:int">
+          <xs:maxInclusive value="5"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="getStudentResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="stud" type="tns:einStudent"/>
+            <xs:element minOccurs="0" ref="tns:technischerResponseText"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="einStudent">
+        <xs:sequence>
+          <xs:element name="studentId" type="xs:int"/>
+          <xs:element maxOccurs="unbounded" name="name" type="xs:string"/>
+          <xs:element name="age" type="xs:int"/>
+          <xs:element name="mymodell" type="tns:modell"/>
+          <xs:element name="class" type="tns:celsiusKörperTemp"/>
+          <xs:element minOccurs="0" name="fehler" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" name="info" type="tns:Struktur_info"/>
+        </xs:sequence>
+        <xs:attribute name="egn" type="xs:int"/>
+      </xs:complexType>
+      <xs:complexType name="Struktur_info">
+        <xs:sequence>
+          <xs:element name="stufe" type="xs:string"/>
+          <xs:element minOccurs="0" name="stufeDatum" type="xs:date"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="einDatensatz">
+        <xs:sequence>
+          <xs:element name="satzId" type="xs:int"/>
+          <xs:element maxOccurs="unbounded" name="element" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="technischerResponseText" type="tns:String500"/>
+      <xs:element name="getDatenRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="datenId" type="tns:datid"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getDatenResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="daten" type="tns:einDatensatz"/>
+            <xs:element minOccurs="0" ref="tns:technischerResponseText"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getStudentResponse">
+    <wsdl:part element="tns:getStudentResponse" name="getStudentResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDatenRequest">
+    <wsdl:part element="tns:getDatenRequest" name="getDatenRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDatenResponse">
+    <wsdl:part element="tns:getDatenResponse" name="getDatenResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getStudentRequest">
+    <wsdl:part element="tns:getStudentRequest" name="getStudentRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="StudentsPort">
+    <wsdl:operation name="getStudent">
+      <wsdl:input message="tns:getStudentRequest" name="getStudentRequest"></wsdl:input>
+      <wsdl:output message="tns:getStudentResponse" name="getStudentResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDaten">
+      <wsdl:input message="tns:getDatenRequest" name="getDatenRequest"></wsdl:input>
+      <wsdl:output message="tns:getDatenResponse" name="getDatenResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="StudentsPortSoap11" type="tns:StudentsPort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getStudent">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getStudentRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getStudentResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDaten">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getDatenRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getDatenResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="students">
+    <wsdl:port binding="tns:StudentsPortSoap11" name="StudentsPortSoap11">
+      <soap:address location="http://localhost:8080/spring4soap-1/soapws"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/spring4soap-1/soapws</con:endpoint></con:endpoints><con:operation id="ecbb2873-396c-4ab5-8f87-4d446de8f669" isOneWay="false" action="" name="getDaten" bindingOperationName="getDaten" type="Request-Response" outputName="getDatenResponse" inputName="getDatenRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="24c6b676-00da-4627-b288-faa439b38e80" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/spring4soap-1/soapws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap="http://concretepage.com/soap">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <soap:getDatenRequest>\r
+         <soap:datenId>1</soap:datenId>\r
+      </soap:getDatenRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://concretepage.com/soap/StudentsPort/getDatenRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="44ccc678-c733-444a-9414-2c9c7350b814" isOneWay="false" action="" name="getStudent" bindingOperationName="getStudent" type="Request-Response" outputName="getStudentResponse" inputName="getStudentRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="1bd9b00f-4146-4356-b614-f7fb3a833301" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/spring4soap-1/soapws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap="http://concretepage.com/soap">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <soap:getStudentRequest>\r
+         <!--You have a CHOICE of the next 2 items at this level-->\r
+         <soap:studentId>1</soap:studentId>\r
+         <!-- <soap:studentId1>1</soap:studentId1>\r-->
+      </soap:getStudentRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://concretepage.com/soap/StudentsPort/getStudentRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>

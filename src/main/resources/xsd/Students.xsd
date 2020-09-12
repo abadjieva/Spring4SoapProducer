@@ -1,0 +1,11 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://concretepage.com/soap" targetNamespace="http://concretepage.com/soap"
+	elementFormDefault="qualified">
+
+	<xs:include schemaLocation="StudentsRequest.xsd"></xs:include>
+	<xs:include schemaLocation="StudentsResponse.xsd"></xs:include>
+	
+	<xs:include schemaLocation="DatenRequest.xsd"></xs:include>
+	<xs:include schemaLocation="DatenResponse.xsd"></xs:include>
+
+</xs:schema>

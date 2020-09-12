@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS `STATUS_ENUM` (
+  `ID` bigint(20) NOT NULL PRIMARY KEY, # -- 1000
+  `NAME` varchar(50),
+  `VERSION` int default 0
+) ENGINE=INNODB DEFAULT CHARACTER SET latin1 COLLATE latin1_german2_ci;

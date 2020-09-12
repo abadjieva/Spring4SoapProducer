@@ -1,0 +1,8 @@
+jdbc.driverClassName = com.mysql.jdbc.Driver
+jdbc.url = jdbc:mysql://localhost:3306/mappis_db190712_test_\u0446\u0438
+jdbc.username = root
+jdbc.password = admin
+hibernate.dialect = org.hibernate.dialect.MySQLDialect
+hibernate.show_sql = false
+hibernate.format_sql = false
+jdbc.bind=java:comp/env/jdbc/mysqlDB

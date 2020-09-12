@@ -1,0 +1,8 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://concretepage.com/soap" targetNamespace="http://concretepage.com/soap"
+	elementFormDefault="qualified">
+
+	<xs:include schemaLocation="StudentsSimpleType.xsd"></xs:include>
+	
+	<xs:element name="technischerResponseText" type="tns:String500"></xs:element>
+</xs:schema>

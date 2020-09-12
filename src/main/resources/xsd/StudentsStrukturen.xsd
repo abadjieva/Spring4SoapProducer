@@ -1,0 +1,39 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://concretepage.com/soap" targetNamespace="http://concretepage.com/soap"
+	elementFormDefault="qualified">
+
+	<xs:include schemaLocation="StudentsSimpleType.xsd"></xs:include>
+
+	<xs:complexType name="einStudent">
+		<xs:sequence>
+			<xs:element name="studentId" type="xs:int" />
+			<xs:element name="name" type="xs:string" maxOccurs="unbounded" />
+			<xs:element name="age" type="xs:int" />
+			<xs:element name="mymodell" type="tns:modell" />
+			<xs:element name="class" type="tns:celsiusKörperTemp" />
+			<xs:element name="fehler" type="xs:string" minOccurs="0" />
+
+			<xs:element name="info" type="tns:Struktur_info"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+		<xs:attribute name="egn" type ="xs:int"> 
+		</xs:attribute>
+		
+	</xs:complexType>
+
+	<xs:complexType name="Struktur_info">
+		<xs:sequence>
+			<xs:element name="stufe" type="xs:string" />
+			<xs:element name="stufeDatum" type="xs:date" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="einDatensatz">
+		<xs:sequence>
+			<xs:element name="satzId" type="xs:int" />
+			<xs:element name="element" type="xs:string" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	
+
+</xs:schema>

@@ -1,0 +1,19 @@
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://concretepage.com/soap" targetNamespace="http://concretepage.com/soap"
+	elementFormDefault="qualified">
+
+<xs:include schemaLocation="StudentsStrukturen.xsd"></xs:include>
+<xs:include schemaLocation="ElementeDefinitionen.xsd"></xs:include>
+
+	<xs:element name="getDatenResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="daten" type="tns:einDatensatz" minOccurs="0" />
+				<xs:element ref="tns:technischerResponseText" minOccurs="0" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	
+</xs:schema>

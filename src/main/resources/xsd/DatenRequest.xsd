@@ -1,0 +1,16 @@
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://concretepage.com/soap" targetNamespace="http://concretepage.com/soap"
+	elementFormDefault="qualified">
+
+<xs:include schemaLocation="StudentsSimpleType.xsd"></xs:include>
+
+	<xs:element name="getDatenRequest" >
+	<xs:complexType>
+		<xs:sequence>
+					<xs:element name="datenId" type="tns:datid" />
+		</xs:sequence>
+	</xs:complexType>
+	</xs:element>
+	
+</xs:schema>

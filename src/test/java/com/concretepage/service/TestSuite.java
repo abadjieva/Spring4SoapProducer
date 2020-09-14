@@ -3,7 +3,11 @@ package com.concretepage.service;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
-// Full Test 14.09.2020
+/**
+ * 
+ * @author abadjiei
+ *
+ */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
         ServiceTest.class,
